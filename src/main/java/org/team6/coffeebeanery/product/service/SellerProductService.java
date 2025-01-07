@@ -1,7 +1,7 @@
-package org.dia.coffeebeanery.product.service;
+package org.team6.coffeebeanery.product.service;
 
 import lombok.RequiredArgsConstructor;
-import org.dia.coffeebeanery.product.repository.ProductRepository;
+import org.team6.coffeebeanery.product.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor

@@ -1,10 +1,10 @@
-package org.dia.coffeebeanery.order.model;
+package org.team6.coffeebeanery.order.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.dia.coffeebeanery.common.constant.OrderStatus;
-import org.dia.coffeebeanery.delivery.model.Delivery;
+import org.team6.coffeebeanery.common.constant.OrderStatus;
+import org.team6.coffeebeanery.delivery.model.Delivery;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,9 +1,9 @@
-package org.dia.coffeebeanery.order.model;
+package org.team6.coffeebeanery.order.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.dia.coffeebeanery.product.model.Product;
+import org.team6.coffeebeanery.product.model.Product;
 
 @Getter
 @Setter

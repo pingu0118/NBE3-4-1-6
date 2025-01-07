@@ -1,4 +1,4 @@
-package org.dia.coffeebeanery.common.model;
+package org.team6.coffeebeanery.common.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

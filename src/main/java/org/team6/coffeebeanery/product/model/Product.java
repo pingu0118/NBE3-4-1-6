@@ -1,4 +1,4 @@
-package org.dia.coffeebeanery.product.model;
+package org.team6.coffeebeanery.product.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package org.dia.coffeebeanery.common.exception;
+package org.team6.coffeebeanery.common.exception;
 
 public class InvalidInputException extends RuntimeException {
     public InvalidInputException(String message) {

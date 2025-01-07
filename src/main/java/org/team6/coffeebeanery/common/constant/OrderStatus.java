@@ -1,4 +1,4 @@
-package org.dia.coffeebeanery.common.constant;
+package org.team6.coffeebeanery.common.constant;
 
 import lombok.Getter;
 

@@ -1,7 +1,7 @@
-package org.dia.coffeebeanery.order.controller;
+package org.team6.coffeebeanery.order.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.dia.coffeebeanery.order.service.SellerOrderService;
+import org.team6.coffeebeanery.order.service.SellerOrderService;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
