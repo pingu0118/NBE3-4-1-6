@@ -1,4 +1,4 @@
-package org.dia.coffeebeanery;
+package org.team6.coffeebeanery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
