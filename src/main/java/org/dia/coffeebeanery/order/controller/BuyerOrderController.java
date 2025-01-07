@@ -1,0 +1,12 @@
+package org.dia.coffeebeanery.order.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.dia.coffeebeanery.order.service.BuyerOrderService;
+import org.springframework.web.bind.annotation.RestController;
+
+@RequiredArgsConstructor
+@RestController
+public class BuyerOrderController {
+    private final BuyerOrderService buyerOrderService;
+    
+}
