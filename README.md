@@ -31,8 +31,12 @@ Database: H2 Database
 │   │               │   │       InvalidInputException.java
 │   │               │   │       ResourceNotFoundException.java
 │   │               │   │
-│   │               │   └───model
-│   │               │           Address.java
+│   │               │   ├───model
+│   │               │   │       Address.java
+│   │               │   │
+│   │               │   └───validation
+│   │               │           Url.java
+│   │               │           UrlValidator.java
 │   │               │
 │   │               ├───delivery
 │   │               │   ├───controller
