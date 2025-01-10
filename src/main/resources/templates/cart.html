@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<div class="container mt-5">
+    <header class="mb-4 text-center">
+        <h1>Grids & Circle</h1>
+    </header>
+
+    <div class="row">
+        <!-- 장바구니 섹션 -->
+        <div class="col-md-8">
+            <h2>장바구니</h2>
+            <div th:if="${cart != null and cart.size() > 0}">
+                <div th:each="item : ${cart}" class="card mb-3">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-md-3">
+                            <img th:src="${item.imageUrl}" class="img-fluid rounded-start" alt="상품 이미지">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${item.productName}"></h5>
+                                <p class="card-text fw-bold" th:text="${item.price + '원'}"></p>
+
+
+
+<!--                                    <label th:for="'quantity-' + ${item.productId}" class="form-label me-2">수량</label>-->
+<!--                                    <input type="number" th:id="'quantity-' + ${item.productId}" name="quantity" class="form-control me-2" th:value="${item.quantity}" min="1" max="10">-->
+<!--                                    <button class="btn btn-dark me-2">적용</button>-->
+
+                                <!-- 수량 텍스트 및 입력폼 -->
+                                <label th:for="'quantity-' + ${item.productId}" class="form-label">수량</label>
+                                <div class="d-flex align-items-center">
+                                    <form action="/updateCart" method="post" class="d-flex align-items-center me-5">
+                                        <input type="hidden" name="id" th:value="${item.productId}">
+                                        <input type="number" th:id="'quantity-' + ${item.productId}" name="quantity"
+                                               class="form-control me-2" th:value="${item.quantity}" min="1" max="10" style="width: 60px;">
+                                        <button type="submit" class="btn btn-dark me-2" style="white-space: nowrap;">적용</button>
+                                    </form>
+
+                                    <!-- 삭제 버튼 -->
+                                    <form action="/removeFromCart" method="post" class="d-inline">
+                                        <input type="hidden" name="id" th:value="${item.productId}">
+                                        <button type="submit" class="btn btn-danger" style="white-space: nowrap;">삭제</button>
+                                    </form>
+                                </div>
+                            </div>
+<!--                                    &lt;!&ndash; 수량 변경 폼 &ndash;&gt;-->
+<!--                                <div class="d-flex align-items-center">-->
+<!--                                    <form action="/updateCart" method="post"  class="me-3">-->
+<!--                                        <input type="hidden" name="id" th:value="${item.productId}">-->
+<!--                                        <div class="d-flex align-items-center"> &lt;!&ndash;  위치&ndash;&gt;-->
+<!--                                          <label th:for="'quantity-' + ${item.productId}" class="form-label">수량</label>-->
+<!--                                          <input type="number" th:id="'quantity-' + ${item.productId}" name="quantity"-->
+<!--                                               class="form-control me-2" th:value="${item.quantity}" min="1" max="10"  style="width: 60px;">-->
+<!--                                        </div>-->
+<!--                                        <button type="submit" class="btn btn-dark ms-2">적용</button>-->
+<!--                                    </form>-->
+
+<!--&lt;!&ndash;                                    삭제버튼&ndash;&gt;-->
+<!--                                    <form action="/removeFromCart" method="post" class="d-inline ms-2" >-->
+<!--                                        <input type="hidden" name="id" th:value="${item.productId}">-->
+<!--                                        <button type="submit" class="btn btn-danger" style="white-space: nowrap;">삭제</button>-->
+<!--                                    </form>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+<!--                <p class="fw-bold d-flex justify-content-between align-items-center">-->
+<!--                   총 금액: <span th:text="${totalPrice + '원'}"></span>-->
+<!--                &lt;!&ndash; 상품 보기 버튼 &ndash;&gt;-->
+<!--                   <a href="/" class="btn btn-primary w-100">상품 보기</a>-->
+                <p class="fw-bold d-flex justify-content-between align-items-center">
+                    <span>총 금액: <span th:text="${totalPrice + '원'}"></span></span>
+                    <a href="/" class="btn btn-primary ms-3">상품 보기</a>
+                </p>
+            </div>
+            <div th:unless="${cart != null and cart.size() > 0}">
+                <p>장바구니가 비어 있습니다.</p>
+                <a href="/" class="btn btn-primary">상품 보기</a>
+            </div>
+        </div>
+
+        <!-- 배송 정보 섹션 -->
+        <div class="col-md-4">
+            <h2>배송 정보</h2>
+            <form action="/checkout" method="post">
+                <div class="mb-3">
+                    <label for="email" class="form-label">이메일</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">주소</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <div class="mb-3">
+                    <label for="detailAddress" class="form-label">상세 주소</label>
+                    <input type="text" class="form-control" id="detailAddress" name="detailAddress">
+                </div>
+                <div class="mb-3">
+                    <label for="postalCode" class="form-label">우편번호</label>
+                    <input type="text" class="form-control" id="postalCode" name="postalCode">
+                </div>
+                <p class="text-muted">당일 오후 2시 이후의 주문은 다음날 배송을 시작합니다.</p>
+                <p class="fw-bold">총 금액: <span th:text="${totalPrice + '원'}"></span></p>
+                <button type="submit" class="btn btn-dark w-100">결제하기</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
